@@ -1,0 +1,19 @@
+Change log for version 0.1.1
+--
+- 10/03/2004
+	fixed NullPointerException when Jacpi tried to determine the number of batteries <Jennifer Pinkham (jennifer at unrulygrrl.org)>
+	fixed NullPointerException when Jacpi tried to determine the fan state <Jennifer Pinkham (jennifer at unrulygrrl.org)>
+	
+Change log for version 0.04
+--
+- 05/03/2004
+    added control on java version;
+- 16/11/2003
+	rewrote all the code;
+	support for  threading;
+	iconify;
+	
+Change log for version 0.03
+--
+- 27/09/2003
+	now could be a real application...

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="all" name="jacpi-0.1.1">
+
+    <target description="Initialize the environment." name="init">
+    	<echo message="Jacpi - java acpi client" />
+    	<echo message="Author:" />
+    	<echo message="2004 Denis Pitzalis denics@free.fr http://denics.free.fr" />
+        <mkdir dir="bin"/>
+        <mkdir dir="bin/images"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile the source files.">
+        <javac debug="true" deprecation="true" destdir="bin" srcdir="src"/>
+			<copy todir="bin/images/">
+        		<fileset dir="src/images"/>
+    		</copy>
+    	<jar basedir="bin" compress="true" jarfile="Jacpi-0.1.1.jar"/>
+    </target>
+    
+    <target name="archive" depends="compile" description="Build the tar file.">
+    <mkdir dir="tmp/jacpi-0.1.1"/>
+    <mkdir dir="tmp/jacpi-0.1.1/src"/>
+    <mkdir dir="tmp/jacpi-0.1.1/doc"/>
+    <copy todir="tmp/jacpi-0.1.1/src">
+    	<fileset dir="src"/>
+    </copy>
+    <copy todir="tmp/jacpi-0.1.1">
+    	<fileset file="build.xml"/>
+    	<fileset file="Jacpi-0.1.1.jar"/>
+    	<fileset file="AUTHORS"/>
+    	<fileset file="CHANGELOG"/>
+    	<fileset file="LICENCE"/>
+    	<fileset file="README"/>
+    	<fileset file="TODO"/>
+    </copy>    
+        <tar basedir="tmp" tarfile="jacpi-0.1.1.tar.bz2" compression="bzip2" excludes="bin/**, *.bz2, *.jar, src/*.class">
+    </tar>
+    <delete dir="tmp"></delete>
+    </target>
+    
+    <target name="javadoc" description="Generate java browseable documentation">
+        <javadoc destdir="doc" access="public" use="true" notree="false"
+            nonavbar="false" noindex="false" splitindex="true"
+            author="true" version="true" nodeprecatedlist="false"
+            nodeprecated="false"
+            sourcefiles="src/Jacpi.java,src/JGUIacpi.java,src/JTXTacpi.java,src/Jlibacpi.java"
+            sourcepath="src" classpath="bin"
+			doctitle="Jacpi 0.1.1"/>
+    </target>
+    
+    <target name="all" depends="archive, javadoc" description="Build everything." >
+        <echo message="Application built."/>
+    </target>
+
+    <target name="clean" depends="init" description="Clean all build products.">
+        <delete dir="bin"/>
+    </target>
+</project>
