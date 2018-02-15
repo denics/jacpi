@@ -17,14 +17,19 @@ Contents of the package:
 
 ## COMPILE
 ```tar xvfj jacpi-x.xx.tar.bz2 (where x.xx is the version number)```
+
 ```ant```
  
 ## USE
 ```java Jacpi```
+
 or 
+
 ```java Jacpi arg (where arg is BAT1 or BAT2 etc)```
+
 to load from shell without X. 
 
 ## DOCUMENTATION
- In the doc directory you can find a detailed javadoc documentation about the Jlibacpi
- You can use and modify Jlibacpi to be used with your programs.
+In the doc directory you can find a detailed javadoc documentation about the Jlibacpi
+
+Feel free to use and modify Jlibacpi to be used with your programs.
